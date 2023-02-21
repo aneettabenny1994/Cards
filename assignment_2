@@ -1,0 +1,36 @@
+package main
+
+import "fmt"
+
+type square struct {
+	sideLength float64
+}
+type triangle struct {
+	height float64
+	base   float64
+}
+
+func (s square) getArea() float64 {
+	//Calculate area
+	return s.sideLength * s.sideLength
+}
+
+func (t triangle) getArea() float64 {
+	//Calculate area
+	return 0.5 * t.base * t.height
+}
+
+type shape interface {
+	getArea() float64
+}
+
+func printArea(sh shape) {
+	fmt.Println(sh.getArea())
+}
+
+func main() {
+	sl := square{sideLength: 4}
+	tr := triangle{height: 6, base: 4}
+	printArea(sl)
+	printArea(tr)
+}
